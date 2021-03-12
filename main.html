@@ -1,0 +1,223 @@
+<html>
+<head>
+	<title></title>
+	<script type="text/javascript">
+
+		function setName(player){
+
+			if (player <= 1){
+
+				var x = document.getElementById("namep1").value;
+				document.getElementById("livenamep1").innerHTML = x;
+			}
+			else{
+
+				var x = document.getElementById("namep2").value;
+				document.getElementById("livenamep2").innerHTML = x;
+			}
+		}
+
+		function setServe(player){
+
+			var x = player;
+
+			var y = document.getElementById("servep1").value;
+
+			if (x <= 1 && y == "servesp1"){
+
+				document.getElementById("servep1").value = "servesp1";
+				document.getElementById("servep2").value = "recivep2";
+				document.getElementById("liveservep1").innerHTML = "o";
+				document.getElementById("liveservep2").innerHTML = "x";
+			}
+			else{
+
+				document.getElementById("servep1").value = "recivep1";
+				document.getElementById("servep2").value = "servesp2";
+				document.getElementById("liveservep1").innerHTML = "x";
+				document.getElementById("liveservep2").innerHTML = "o";
+			}
+		}
+		function setScore(player){
+
+			if (player <= 1){
+
+				var x = document.getElementById("scorep1").value;
+
+				var y = parseInt(x) + 1;
+
+				document.getElementById("scorep1").value = y;
+
+				var z = document.getElementById("setp1").value;
+				var a = document.getElementById("setp2").value;
+
+				var b = parseInt(z) + parseInt(a);
+
+				if (b == 0){
+
+					document.getElementById("liveset1p1").innerHTML = y;
+
+				}
+				else if (b == 1){
+
+					document.getElementById("liveset2p1").innerHTML = y;
+
+				}
+				else if (b == 2){
+
+					document.getElementById("liveset3p1").innerHTML = y;
+
+				}
+			}
+			else{
+
+				var x = document.getElementById("scorep2").value;
+
+				var y = parseInt(x) + 1;
+
+				document.getElementById("scorep2").value = y;
+
+				var z = document.getElementById("setp1").value;
+				var a = document.getElementById("setp2").value;
+
+				var b = parseInt(z) + parseInt(a);
+
+				if (b == 0){
+
+					document.getElementById("liveset1p2").innerHTML = y;
+
+				}
+				else if (b == 1){
+
+					document.getElementById("liveset2p2").innerHTML = y;
+
+				}
+				else if (b == 2){
+
+					document.getElementById("liveset3p2").innerHTML = y;
+
+				}
+			}
+		}
+		function setScoreSet(){
+
+			document.getElementById("scorep1").value = 0;
+			document.getElementById("scorep2").value = 0;
+		}
+
+		function setSet(player){
+
+			if (player <= 1){
+
+				var x = document.getElementById("setp1").value;
+				var y = parseInt(x) + 1;
+
+				document.getElementById("setp1").value = y;
+			}
+			else{
+
+				var x = document.getElementById("setp2").value;
+				var y = parseInt(x) + 1;
+
+				document.getElementById("setp2").value = y;
+			}
+		}
+
+	</script>
+	<style type="text/css">
+		body {
+			background-color: pink;
+		}
+	</style>
+</head>
+<body>
+	<form method="POST">
+		<table align="center">
+			<tr>
+				<h4 align="center">BADMINTON SCOREBOARD SYSTEM</h4>
+			</tr>
+			<tr>
+				<td><input type="text" name="matchid" id="matchid"></td>
+				<td><input type="button" name="btnmatchid" id="btnmatchid" value="search"></td>
+			</tr>
+			<tr>
+				<th>PLAYER NAME</th>
+				<th>SERVE</th>
+				<th>SCORE</th>
+				<th>SET</th>
+			</tr>
+			<tr>
+				<td>
+					<input type="text" name="namep1" id="namep1" value="namep1" onchange="setName(1)">
+				</td>
+				<td>
+					<select id="servep1" onchange="setServe(1)">
+						<option>-</option>
+						<option value="servesp1">SERVE</option>
+						<option value="recivep1">RECIVE</option>
+					</select>	
+				</td>
+				<td>
+					<input type="text" name="scorep1" id="scorep1" value=0 size="1">
+					<input type="button" name="addscorep1" id="addscorep1" value="+1" onclick="setScore(1)">
+				</td>
+				<td>
+					<input type="text" name="setp1" id="setp1" value=0 size="1">
+					<input type="button" name="addsetp1" id="addsetp1" value="+1" onclick="setSet(1)">
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<input type="text" name="namep2" id="namep2" value="namep2" onchange="setName(2)">
+				</td>
+				<td>
+					<select id="servep2" onchange="setServe(2)">
+						<option>-</option>
+						<option value="servesp2">SERVE</option>
+						<option value="recivep2">RECIVE</option>
+					</select>	
+				</td>
+				<td>
+					<input type="text" name="scorep2" id="scorep2" value=0 size="1">
+					<input type="button" name="addscorep2" id="addscorep2" value="+1" onclick="setScore(2)">
+				</td>
+				<td>
+					<input type="text" name="setp2" id="setp2" value=0 size="1">
+					<input type="button" name="addsetp2" id="addsetp2" value="+1" onclick="setSet(2)">
+				</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td><input type="button" name="setscore" id="setscore" value="SET" onclick="setScoreSet()"></td>
+			</tr>
+			<tr>
+				<td><input type="button" name="save" id="save" value="SAVE"></td>
+			</tr>
+		</table>
+		<table align="center">
+			<tr>
+				<th>Player</th>
+				<th>S</th>
+				<th>1</th>
+				<th>2</th>
+				<th>3</th>
+			</tr>
+			<tr>
+				<td><h4 id="livenamep1">Player 1</h4></td>
+				<td><h4 id="liveservep1">o</h4></td>
+				<td><h4 id="liveset1p1">0</h4></td>
+				<td><h4 id="liveset2p1">0</h4></td>
+				<td><h4 id="liveset3p1">0</h4></td>
+			</tr>
+			<tr>
+				<td><h4 id="livenamep2">Player 2</h4></td>
+				<td><h4 id="liveservep2">o</h4></td>
+				<td><h4 id="liveset1p2">0</h4></td>
+				<td><h4 id="liveset2p2">0</h4></td>
+				<td><h4 id="liveset3p2">0</h4></td>
+			</tr>
+		</table>
+	</form>
+</body>
+</html>
